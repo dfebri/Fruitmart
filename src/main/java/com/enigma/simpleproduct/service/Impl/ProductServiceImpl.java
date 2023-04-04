@@ -40,7 +40,6 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
 
     }
-
     @Override
     public Page<Product> getProductPerPage(Pageable pageable) {
         return productRepository.findAll(pageable);

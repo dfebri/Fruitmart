@@ -15,4 +15,5 @@ public interface ProductRepository extends JpaRepository<Product, String> {
     @Query(value = "SELECT * from mst_product p where p.stock < 5", nativeQuery = true)
     List<Product> findProductMinStock();
 
+
 }

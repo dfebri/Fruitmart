@@ -45,6 +45,11 @@ public class ProductController {
         return productService.getProductPerPage(pageable);
     }
 
+    @GetMapping("/list")
+    public List<Product> getAllProductList (){
+        return productService.getAllProduct();
+    }
+
     @GetMapping("/min-stock")
     public List<Product> getProductMinStock(){
         return productService.findProductMinStock();
