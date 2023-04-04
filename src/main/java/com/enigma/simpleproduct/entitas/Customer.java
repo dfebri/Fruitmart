@@ -1,28 +1,35 @@
 package com.enigma.simpleproduct.entitas;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "mst_product")
-@AllArgsConstructor
+@Table(name = "mst_customer")
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-public class Product {
+public class Customer {
+
     @Id
+    @Column(name = "id_customer")
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    @Column(name = "id_product")
     private String id;
-    private String name;
-    @Column(name = "product_price")
-    private Integer productPrice;
-    private Integer stock;
+    @Column(nullable = false)
+    private String customerName;
 
+    @Column(nullable = false)
+    private String address;
+
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private Date birthDate;
 }
