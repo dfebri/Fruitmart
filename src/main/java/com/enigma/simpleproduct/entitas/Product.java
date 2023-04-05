@@ -20,9 +20,11 @@ public class Product {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(name = "id_product")
     private String id;
-    private String name;
-    @Column(name = "product_price")
+    private String nameProduct;
     private Integer productPrice;
     private Integer stock;
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
 
 }
