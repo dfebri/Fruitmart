@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -15,6 +16,8 @@ import javax.persistence.*;
 public class DetailTransaction {
     @Id
     @Column(name = "id_detail_transaction")
+    @GeneratedValue (generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     @ManyToOne
     @JoinColumn(name = "product_id")

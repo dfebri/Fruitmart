@@ -1,8 +1,11 @@
 package com.enigma.fruitmart.service.Impl;
 
 import com.enigma.fruitmart.entitas.Product;
+import com.enigma.fruitmart.entitas.Seller;
 import com.enigma.fruitmart.repository.ProductRepository;
 import com.enigma.fruitmart.service.ProductService;
+import com.enigma.fruitmart.service.SellerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -14,8 +17,12 @@ public class ProductServiceImpl implements ProductService {
 
     ProductRepository productRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    SellerService sellerService;
+
+    @Autowired
+    public ProductServiceImpl(ProductRepository productRepository, SellerService sellerService) {
         this.productRepository = productRepository;
+        this.sellerService = sellerService;
     }
 
     @Override
@@ -32,7 +39,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product saveProduct(Product product) {
-        return productRepository.save(product);
+
+        Product saveProduct = productRepository.save(product);
+        Seller seller = sellerService.getSellerById(saveProduct.getSeller().getId());
+        saveProduct.setSeller(seller);
+        return saveProduct;
+
     }
 
     @Override
