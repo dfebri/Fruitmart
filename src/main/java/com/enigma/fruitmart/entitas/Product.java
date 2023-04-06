@@ -1,4 +1,4 @@
-package com.enigma.simpleproduct.entitas;
+package com.enigma.fruitmart.entitas;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

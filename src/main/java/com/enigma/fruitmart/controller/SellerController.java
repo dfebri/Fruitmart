@@ -1,7 +1,7 @@
-package com.enigma.simpleproduct.controller;
+package com.enigma.fruitmart.controller;
 
-import com.enigma.simpleproduct.entitas.Seller;
-import com.enigma.simpleproduct.service.SellerService;
+import com.enigma.fruitmart.entitas.Seller;
+import com.enigma.fruitmart.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

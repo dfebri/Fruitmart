@@ -1,9 +1,9 @@
-package com.enigma.simpleproduct.service.Impl;
+package com.enigma.fruitmart.service.Impl;
 
-import com.enigma.simpleproduct.entitas.Customer;
-import com.enigma.simpleproduct.repository.CustomerRepository;
-import com.enigma.simpleproduct.service.CustomerService;
-import com.enigma.simpleproduct.utils.exeption.DataNotFoundException;
+import com.enigma.fruitmart.entitas.Customer;
+import com.enigma.fruitmart.repository.CustomerRepository;
+import com.enigma.fruitmart.service.CustomerService;
+import com.enigma.fruitmart.utils.exeption.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.enigma.simpleproduct.service;
+package com.enigma.fruitmart.service;
 
-import com.enigma.simpleproduct.entitas.Seller;
+import com.enigma.fruitmart.entitas.Seller;
 
 import java.util.List;
 

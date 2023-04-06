@@ -1,7 +1,7 @@
-package com.enigma.simpleproduct.controller;
+package com.enigma.fruitmart.controller;
 
-import com.enigma.simpleproduct.entitas.Product;
-import com.enigma.simpleproduct.service.ProductService;
+import com.enigma.fruitmart.entitas.Product;
+import com.enigma.fruitmart.service.ProductService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

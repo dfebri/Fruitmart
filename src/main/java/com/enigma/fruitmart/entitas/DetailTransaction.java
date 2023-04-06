@@ -1,4 +1,4 @@
-package com.enigma.simpleproduct.entitas;
+package com.enigma.fruitmart.entitas;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

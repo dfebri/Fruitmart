@@ -1,4 +1,4 @@
-package com.enigma.simpleproduct;
+package com.enigma.fruitmart;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

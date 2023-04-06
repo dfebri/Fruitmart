@@ -1,13 +1,13 @@
-package com.enigma.simpleproduct;
+package com.enigma.fruitmart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SimpleproductApplication {
+public class FruitmartApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SimpleproductApplication.class, args);
+		SpringApplication.run(FruitmartApplication.class, args);
 	}
 
 }

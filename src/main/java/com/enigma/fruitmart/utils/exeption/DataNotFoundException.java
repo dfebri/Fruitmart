@@ -1,4 +1,4 @@
-package com.enigma.simpleproduct.utils.exeption;
+package com.enigma.fruitmart.utils.exeption;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

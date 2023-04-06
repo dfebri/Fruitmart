@@ -1,6 +1,6 @@
-package com.enigma.simpleproduct.repository;
+package com.enigma.fruitmart.repository;
 
-import com.enigma.simpleproduct.entitas.Seller;
+import com.enigma.fruitmart.entitas.Seller;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
