@@ -5,13 +5,10 @@ import com.enigma.fruitmart.entitas.Transaction;
 import com.enigma.fruitmart.service.DetailTransactionService;
 import com.enigma.fruitmart.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-//@RequestMapping(value = "transactions")
+@RequestMapping(value = "transactions")
 public class TransactionController {
 
     TransactionService transactionService;
@@ -24,7 +21,7 @@ public class TransactionController {
         this.detailTransactionService = detailTransactionService;
     }
 
-    @PostMapping(value = "transactions")
+    @PostMapping
     public Transaction saveTranscation (@RequestBody Transaction transaction){
         return transactionService.saveTransaction(transaction);
     }
@@ -32,5 +29,10 @@ public class TransactionController {
     @PostMapping(value = "/transactions-detail")
     public DetailTransaction saveDetailTransaction (@RequestBody DetailTransaction detailTransaction){
         return detailTransactionService.saveDetailTranscation(detailTransaction);
+    }
+
+    @GetMapping("/{id}")
+    public Transaction getTransactionById (@PathVariable String id){
+        return transactionService.getTransactionById(id);
     }
 }
