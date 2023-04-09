@@ -1,5 +1,6 @@
 package com.enigma.fruitmart.service.Impl;
 
+import com.enigma.fruitmart.dto.ProductDTO;
 import com.enigma.fruitmart.entitas.Product;
 import com.enigma.fruitmart.entitas.Seller;
 import com.enigma.fruitmart.repository.ProductRepository;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -38,8 +40,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product saveProduct(Product product) {
+    public ProductDTO getProductDTOById(String id) {
+        if (productRepository.findById(id).isPresent()) {
+            Product product = productRepository.findById(id).get();
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.setProductid(product.getId());
+            productDTO.setNameProduct(product.getNameProduct());
+            productDTO.setProductPrice(product.getProductPrice());
+            productDTO.setStock(product.getStock());
+            return productDTO;
+        } else throw new NoSuchElementException();
+    }
 
+    @Override
+    public Product saveProduct(Product product) {
         Product saveProduct = productRepository.save(product);
         Seller seller = sellerService.getSellerById(saveProduct.getSeller().getId());
         saveProduct.setSeller(seller);

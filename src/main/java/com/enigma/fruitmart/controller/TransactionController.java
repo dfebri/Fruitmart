@@ -1,5 +1,6 @@
 package com.enigma.fruitmart.controller;
 
+import com.enigma.fruitmart.dto.TranscationDTO;
 import com.enigma.fruitmart.entitas.DetailTransaction;
 import com.enigma.fruitmart.entitas.Transaction;
 import com.enigma.fruitmart.service.DetailTransactionService;
@@ -34,5 +35,10 @@ public class TransactionController {
     @GetMapping("/{id}")
     public Transaction getTransactionById (@PathVariable String id){
         return transactionService.getTransactionById(id);
+    }
+    @GetMapping("/DTO/{id}")
+    public TranscationDTO getTransactionDTO (@PathVariable String id){
+        return transactionService.getTransactionDTOById(id);
+
     }
 }

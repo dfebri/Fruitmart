@@ -1,5 +1,6 @@
 package com.enigma.fruitmart.service.Impl;
 
+import com.enigma.fruitmart.dto.DetailTransactionDTO;
 import com.enigma.fruitmart.dto.TranscationDTO;
 import com.enigma.fruitmart.entitas.Customer;
 import com.enigma.fruitmart.entitas.DetailTransaction;
@@ -16,6 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -47,6 +51,7 @@ public class TransactionServiceImpl implements TransactionService {
         for (DetailTransaction dt : transaction.getDetailTransactions()) {
             Product product = productService.getProductById(dt.getProduct().getId());
             product.setStock(product.getStock() - dt.getQuantity());
+//            dt.setProductTransactionPrice(product.getProductPrice() * dt.getQuantity());
             dt.setProduct(product);
             dt.setTransaction(saveTransactions);
             detailTransactionService.saveDetailTranscation(dt);
@@ -62,6 +67,55 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public TranscationDTO getTransactionDTOById(String id) {
-        return null;
+//        if (transactionRepository.findById(id).isPresent()) {
+//            Transaction transaction = transactionRepository.findById(id).get();
+//            TranscationDTO transcationDTO = new TranscationDTO();
+//            transcationDTO.setTransactionid(transaction.getId());
+//            transcationDTO.setCustomerName(transaction.getCustomer().getCustomerName());
+//            transcationDTO.setTransactionDate(transaction.getDateTransaction());
+//            List<DetailTransactionDTO> detailTransactionDTOS = new ArrayList<>();
+//
+//            Integer total = 0;
+//            for (DetailTransaction dt : transaction.getDetailTransactions()) {
+//                DetailTransactionDTO detailTransactionDTO = new DetailTransactionDTO();
+//                detailTransactionDTO.setNameProduct(dt.getProduct().getNameProduct());
+//                detailTransactionDTO.setQuantity(dt.getQuantity());
+//                detailTransactionDTO.setPriceSell(dt.getProduct().getProductPrice());
+//                Integer subtotal = dt.getProductTransactionPrice() * dt.getQuantity();
+//                detailTransactionDTO.setSubTotal(subtotal);
+//                total = total + subtotal;
+//                detailTransactionDTOS.add(detailTransactionDTO);
+//            }
+//            transcationDTO.setTotal(total);
+//            transcationDTO.setDetailTransactionDTO(detailTransactionDTOS);
+//
+//            return transcationDTO;
+//        }
+//        else throw new NoSuchElementException();
+//    }
+        Transaction transaction = transactionRepository.findById(id).get();
+        TranscationDTO transcationDTO = new TranscationDTO();
+        transcationDTO.setTransactionid(transaction.getId());
+        transcationDTO.setCustomerName(transaction.getCustomer().getCustomerName());
+        transcationDTO.setTransactionDate(transaction.getDateTransaction());
+        List<DetailTransactionDTO> detailTransactionDTOS = new ArrayList<>();
+
+        Integer total = 0;
+        for (DetailTransaction dt : transaction.getDetailTransactions()) {
+            DetailTransactionDTO detailTransactionDTO = new DetailTransactionDTO();
+            detailTransactionDTO.setNameProduct(dt.getProduct().getNameProduct());
+            detailTransactionDTO.setQuantity(dt.getQuantity());
+            detailTransactionDTO.setPriceSell(dt.getProductTransactionPrice());
+            Integer subtotal = dt.getQuantity() * dt.getProductTransactionPrice();
+            detailTransactionDTO.setSubTotal(subtotal);
+//            total = total + subtotal;
+            total += subtotal;
+            detailTransactionDTOS.add(detailTransactionDTO);
+        }
+        transcationDTO.setTotal(total);
+        transcationDTO.setDetailTransactionDTO(detailTransactionDTOS);
+
+        return transcationDTO;
     }
 }
+

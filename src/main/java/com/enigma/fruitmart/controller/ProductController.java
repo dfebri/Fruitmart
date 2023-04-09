@@ -1,5 +1,6 @@
 package com.enigma.fruitmart.controller;
 
+import com.enigma.fruitmart.dto.ProductDTO;
 import com.enigma.fruitmart.entitas.Product;
 import com.enigma.fruitmart.service.ProductService;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,11 @@ public class ProductController {
     @GetMapping("/{id}")
     public Product getProduct(@PathVariable String id){
         return productService.getProductById(id);
+    }
+
+    @GetMapping("/DTO/{id}")
+    public ProductDTO getProductDTOByID(@PathVariable String id){
+        return productService.getProductDTOById(id);
     }
 
     @PostMapping

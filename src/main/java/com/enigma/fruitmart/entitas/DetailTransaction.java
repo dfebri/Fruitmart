@@ -24,7 +24,6 @@ public class DetailTransaction {
     private Product product;
     private Integer quantity;
     private Integer productTransactionPrice;
-
     @ManyToOne
     @JoinColumn(name = "transaction_id")
     @JsonIgnoreProperties("detailTransactions")
