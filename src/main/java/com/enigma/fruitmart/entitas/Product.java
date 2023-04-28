@@ -26,4 +26,15 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "seller_id")
     private Seller seller;
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", nameProduct='" + nameProduct + '\'' +
+                ", productPrice=" + productPrice +
+                ", stock=" + stock +
+                ", seller=" + seller +
+                '}';
+    }
 }

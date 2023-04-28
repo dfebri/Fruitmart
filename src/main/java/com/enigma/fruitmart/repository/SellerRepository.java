@@ -11,5 +11,6 @@ public interface SellerRepository extends JpaRepository<Seller, String> {
     public Seller findSellerByEmail (String email);
 
     List<Seller> findSellerBynameSellerContainingIgnoreCase (String sellerName);
+
 //    findCustomerByCustomerNameContainingIgnoreCase
 }

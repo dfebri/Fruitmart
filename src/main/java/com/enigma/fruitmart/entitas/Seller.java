@@ -24,4 +24,11 @@ public class Seller {
     private String email;
     private Integer numberPhone;
     private String address;
+
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "id='" + id + '\'' +
+                '}';
+    }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<Customer, String> {
 
     List<Customer> findCustomerByCustomerNameContainingIgnoreCase (String nameCriteria);
+
 }
 
 
